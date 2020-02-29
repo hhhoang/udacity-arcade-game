@@ -106,13 +106,18 @@ allEnemies.push(enemy3);
 var player = new Player(100,400,20);
 
 
-// TO-DO:
 // When player reaches the water without colliding, return to initial position
 function resetPlayerPosition(){
     player.x = 100;
     player.y = 400;
+    updateScore();
 }
 
+let scoreCounter = document.getElementsByClassName('score')[0];
+// Update scores
+function updateScore(){
+    scoreCounter.innerHTML = parseInt(scoreCounter.innerHTML) + 1;
+}
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
