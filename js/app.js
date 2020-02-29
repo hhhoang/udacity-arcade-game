@@ -22,15 +22,33 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.speed * dt;
-    if (this.x > 450) {
+    if (this.x > 505) {
         this.x = -50;
+        // TO-DO: set/add speed to random
     }
+    checkCollisions(this);
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+
+// collision detection 
+// https://stackoverflow.com/questions/13916966/adding-collision-detection-to-images-drawn-on-canvas
+// Player: 60*80, Bug: 100*50
+function checkCollisions(eachBug){
+    if (player.x < eachBug.x + 80 &&
+        player.x + 60 > eachBug.x &&
+        player.y < eachBug.y + 60 &&
+        player.y + 80 > eachBug.y){
+            console.log("collideeeeee");
+            resetPlayerPosition();
+            resetScore();
+        }
+}
+
 
 // ******* PLAYER *******
 // Now write your own player class
@@ -39,7 +57,7 @@ var Player = function(x,y,s) {
     this.y = y;
     this.speed = s;
     //TO-DO: only char-boy image works
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-princess-girl.png';
 };
 // This class requires an update(), render() and
 Player.prototype.update = function(dt) {
@@ -85,10 +103,11 @@ Player.prototype.handleInput = function(key){
             }
             break;    
     }
-    // player reaches water
+    // player reaches water without colliding
     if(this.y == 0){
-        console.log("reach water")
+        console.log("reach water without coliding")
         resetPlayerPosition();
+        updateScore();
     }
 }
 
@@ -97,7 +116,6 @@ Player.prototype.handleInput = function(key){
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-
 var enemy1 = new Enemy(-100, 60, 130);
 var enemy2 = new Enemy(-100, 150, 60);
 var enemy3 = new Enemy(-100, 230, 80);
@@ -109,11 +127,10 @@ allEnemies.push(enemy3);
 var player = new Player(100,400,20);
 
 
-// When player reaches the water without colliding, return to initial position
+// return to initial position
 function resetPlayerPosition(){
     player.x = 100;
     player.y = 400;
-    updateScore();
 }
 
 let scoreCounter = document.getElementsByClassName('score')[0];
@@ -121,6 +138,11 @@ let scoreCounter = document.getElementsByClassName('score')[0];
 function updateScore(){
     scoreCounter.innerHTML = parseInt(scoreCounter.innerHTML) + 1;
 }
+// reset scores
+function resetScore(){
+    scoreCounter.innerHTML = 0;
+}
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
