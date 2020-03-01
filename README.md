@@ -25,10 +25,11 @@ You win the game when your scores are 10.
 Happy playing!
 
 ## Demo
-- ![](demo_arcade_game.gif)
+![](demo_arcade_game.gif)
+
 
 ## Dependencies
-- n/a
+- I recorded the screen using powerpoint and converted to demo gif using gifs.com since I can not upload video to ReadMe 
 
 ## Contributing
 
