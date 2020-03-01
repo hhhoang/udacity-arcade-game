@@ -41,18 +41,25 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 
 .modal-content {
     background-color: #4d6d9a;
-    font-family: 'Courier New', Courier, monospace;
+    background-image: linear-gradient(to right, green, blue);
     margin: auto;
     padding: 20px;
-    border: 1px solid #86b3d1;
+    border: 1px solid white;
     width: 30%;
     text-align: center;
+    animation-name: modalAnimation;
+    animation-duration: 4s;
 }
 
 
+@keyframes modalAnimation {
+    from {top: 0px;}
+    to {top: 200px;}
+  }
+
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: blue;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -60,27 +67,29 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: green;
     text-decoration: none;
     cursor: pointer;
 }
 
-.playMeAgain {
-    background-color: #474853;
+.playMeButton {
+    background-image: linear-gradient(red, black);
     border: none;
-    border-radius: 8px;
+    border-radius: 28px;
     color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     margin: 4px 2px;
     cursor: pointer;
 }
 
 
 /* Darker background on mouse-over */
-.playMeAgain:hover {
-    background-color: #aaaaaa;
+.playMeButton:hover {
+    background-image: linear-gradient(black, red);
 }
