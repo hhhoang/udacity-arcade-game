@@ -25,7 +25,7 @@ You win the game when your scores are 10.
 Happy playing!
 
 ## Demo
-- n/a
+- ![](demo_arcade_game.gif)
 
 ## Dependencies
 - n/a
