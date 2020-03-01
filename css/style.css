@@ -40,11 +40,11 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 /* Modal Content */
 
 .modal-content {
-    background-color: rgb(114, 109, 109);
+    background-color: #4d6d9a;
     font-family: 'Courier New', Courier, monospace;
     margin: auto;
     padding: 20px;
-    border: 1px solid white;
+    border: 1px solid #86b3d1;
     width: 30%;
     text-align: center;
 }
@@ -66,7 +66,7 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 }
 
 .playMeAgain {
-    background-color: black;
+    background-color: #474853;
     border: none;
     border-radius: 8px;
     color: white;

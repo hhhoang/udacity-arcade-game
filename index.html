@@ -16,12 +16,22 @@
     <div>
         <h2>Your Scores: <span class="score">0</span></h2> 	
     </div>
-    <!-- Instruction how to play the game -->
-    <div class="mission">
-        <p>Using arrow keys to reach the water without coliding the bugs.</p>
-        <p>Your scores will be reset if you hit the bug.</p>
-        <p>You win the game when your scores are 5.</p>	
-    </div>
+
+    <!-- Modal pop up to instruct how to play the game -->
+    <div id="mission" class="modal">
+        <div class="modal-content">
+            <h2>Game rules:</h2>
+            <h3>Using arrow keys to move the player<br>
+            Reaching the water gets 1 point.<br>
+            Be careful, the bugs move horizontally randomly.<br>
+            Colliding the bugs will reset your scores.<br>
+            5 points, you win the game!<br>
+            Got it? <br>
+            Let's play then!</h3>
+            <button id="play" class="playMeAgain"> Play</button>
+        </div>
+    </div>      
+
     <!-- Modal pop up when winning the game -->
     <div id="wonMessage" class="modal">
         <div class="modal-content">

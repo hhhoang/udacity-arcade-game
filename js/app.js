@@ -44,7 +44,6 @@ function checkCollisions(eachBug){
         player.x + 60 > eachBug.x &&
         player.y < eachBug.y + 60 &&
         player.y + 80 > eachBug.y){
-            console.log("collideeeeee");
             resetPlayerPosition();
             resetScore();
         }
@@ -68,45 +67,46 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // a handleInput() method.
-// move the player subject to the movement of arrow key 
+// move the player subject to the movement of arrow key
+// col width 101, row 83 
 Player.prototype.handleInput = function(key){
     console.log(key);
     switch(key){
         case "left":
-            if(this.x - 50 >= 0){
-                this.x -= 50;
+            if(this.x - 83 >= 0){
+                this.x -= 83;
             } else{
                 this.x = 0;
             }
             break;
         case "right":
-            if(this.x + 50 <= 450){
-                this.x += 50;
+            if(this.x + 83 <= 400){
+                this.x += 83;
             } else{
-                this.x = 450;
+                this.x = 400;
             }    
 
             break;
         case "up":
-            if(this.y - 50 >= 0){
-                this.y -= 50;
+            if(this.y - 90 >= 0){
+                this.y -= 90;
             } else{
                 this.y = 0;
                 // player reaches water
             }             
             break;
         case "down":
-            if(this.y + 50 <= 450){
-                this.y += 50;
+            if(this.y + 90 <= 400){
+                this.y += 90;
                 console.log(this.x, this.y);
             } else{
-                this.y = 450;
+                this.y = 400;
             }
             break;    
     }
     // player reaches water without colliding
+    // reset position and update score
     if(this.y == 0){
-        console.log("reach water without coliding")
         resetPlayerPosition();
         updateScore();
     }
@@ -118,20 +118,20 @@ Player.prototype.handleInput = function(key){
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 var enemy1 = new Enemy(-50, 60, 130);
-var enemy2 = new Enemy(-70, 150, 60);
-var enemy3 = new Enemy(-100, 230, 80);
+var enemy2 = new Enemy(-50, 150, 60);
+var enemy3 = new Enemy(-50, 230, 80);
 allEnemies.push(enemy1);
 allEnemies.push(enemy2);
 allEnemies.push(enemy3);
 
 // Place the player object in a variable called player
-var player = new Player(200, 420, 30);
+var player = new Player(200, 400, 50);
 
 
 // return to initial position
 function resetPlayerPosition(){
     player.x = 200;
-    player.y = 420;
+    player.y = 400;
 }
 
 // **** SCORES *****
@@ -149,8 +149,19 @@ function resetScore(){
     scoreCounter.innerHTML = 0;
 }
 
-displayWonMessage();
+mission();
 
+function mission(){
+    // Get the modal
+    let modal = document.getElementById('mission');
+    // Get the button play me
+    let play = document.getElementById('play');
+
+    modal.style.display = 'block';
+    play.onclick = function() {
+        modal.style.display = 'none';
+    }
+}        
 
 // Display win message
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
