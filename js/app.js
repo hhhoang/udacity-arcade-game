@@ -23,8 +23,9 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x += this.speed * dt;
     if (this.x > 505) {
-        this.x = -50;
-        // TO-DO: set/add speed to random
+        this.x = -10;
+        // then set speed to random speed bw 100-300 to add suprise to the game
+        this.speed = Math.floor(Math.random() * 300) + 100;
     }
     checkCollisions(this);
 };
@@ -56,7 +57,7 @@ var Player = function(x,y,s) {
     this.x = x;
     this.y = y;
     this.speed = s;
-    //TO-DO: only char-boy image works
+    //TO-DO: allow to choose player characters
     this.sprite = 'images/char-princess-girl.png';
 };
 // This class requires an update(), render() and
@@ -116,23 +117,24 @@ Player.prototype.handleInput = function(key){
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-var enemy1 = new Enemy(-100, 60, 130);
-var enemy2 = new Enemy(-100, 150, 60);
+var enemy1 = new Enemy(-50, 60, 130);
+var enemy2 = new Enemy(-70, 150, 60);
 var enemy3 = new Enemy(-100, 230, 80);
 allEnemies.push(enemy1);
 allEnemies.push(enemy2);
 allEnemies.push(enemy3);
 
 // Place the player object in a variable called player
-var player = new Player(100,400,20);
+var player = new Player(200, 420, 30);
 
 
 // return to initial position
 function resetPlayerPosition(){
-    player.x = 100;
-    player.y = 400;
+    player.x = 200;
+    player.y = 420;
 }
 
+// **** SCORES *****
 let scoreCounter = document.getElementsByClassName('score')[0];
 // Update scores
 function updateScore(){
