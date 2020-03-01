@@ -16,6 +16,8 @@ You can clone or download this repository, open the "index.html" and start playi
 ## How To Play The Game
 Your mission is to using the arrow keys to move the player around reaching the water area (blue area on top of the screen) without colliding with the bugs.
 
+If you collide with the bugs, you will be set back to the initial position.
+
 Your scores increase everytime you reach the water area without hitting the bugs, but it will set back to zero if you hit the bugs. 
 
 You win the game when your scores are 10. 

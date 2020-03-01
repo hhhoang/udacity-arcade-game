@@ -139,10 +139,52 @@ let scoreCounter = document.getElementsByClassName('score')[0];
 // Update scores
 function updateScore(){
     scoreCounter.innerHTML = parseInt(scoreCounter.innerHTML) + 1;
+    // display winning message when scores = 5 
+    if (parseInt(scoreCounter.innerHTML) == 5){
+        displayWonMessage();
+    } 
 }
 // reset scores
 function resetScore(){
     scoreCounter.innerHTML = 0;
+}
+
+displayWonMessage();
+
+
+// Display win message
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+function displayWonMessage() {
+    // Get the modal
+    let modal = document.getElementById('wonMessage');
+    // Get the <span> element that closes the modal
+    let span = document.getElementsByClassName('close')[0];
+    // Get the button play me
+    let button = document.getElementById('playMe');
+
+    modal.style.display = 'block';
+
+    // Play me button
+    button.onclick = function() {
+        modal.style.display = 'none';
+        restartGame();
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+            modal.style.display = 'none';
+        }
+        // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+// restart the game
+function restartGame(){
+    resetScore();
 }
 
 // This listens for key presses and sends the keys to your
